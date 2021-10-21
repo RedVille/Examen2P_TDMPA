@@ -1,0 +1,7 @@
+<resources>
+    <string name="categoryView">Categories</string>
+    <string name="randomMealView">Random Meal</string>
+    <string name="accountView">Account</string>
+
+    <string name="app_name">MealApp</string>
+</resources>
