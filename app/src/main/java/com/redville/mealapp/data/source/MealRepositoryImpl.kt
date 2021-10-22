@@ -18,12 +18,14 @@ class MealRepositoryImpl @Inject constructor(
 ) :
     MealRepository, ApiRequest {
 
-    override fun getMealsByName(name: String) : Either<Failure, MealsResponse> {
-        val result = makeRequest(networkHandler, mealApi.getCocktailsByName(name), { it }, MealsResponse(emptyList()))
+    // MEALS
+
+    override fun getMeals(category: String) : Either<Failure, MealsResponse> {
+        val result = makeRequest(networkHandler, mealApi.getMeals(category), { it }, MealsResponse(emptyList()))
 
         return if (result.isLeft) {
 
-            val localResult = mealDao.getMealsByName("%$name%")
+            val localResult = mealDao.getMeals("%$category%")
 
             if (localResult.isEmpty()) result
             else Either.Right(MealsResponse(localResult))
@@ -32,15 +34,10 @@ class MealRepositoryImpl @Inject constructor(
 
     }
 
-    override fun saveMeal(meals: List<Meal>): Either<Failure, Boolean> {
+    override fun saveMeals(meals: List<Meal>): Either<Failure, Boolean> {
         val result = mealDao.saveMeals(meals)
         return if (result.size == meals.size) Either.Right(true)
         else Either.Left(Failure.DatabaseError)
     }
-
-    override fun updateMeal(meal: Meal): Either<Failure, Boolean> {
-        TODO("Not yet implemented")
-    }
-
 
 }

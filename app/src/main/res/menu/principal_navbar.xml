@@ -4,21 +4,21 @@
 
     <item
         android:id="@+id/categoriesFragment"
-        android:icon="@drawable/ic_default"
+        android:icon="@drawable/ic_menu1"
         android:orderInCategory="1"
         android:title="@string/categoryView"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/randomMealFragment"
-        android:icon="@drawable/ic_randomdefault"
+        android:icon="@drawable/ic_random"
         android:orderInCategory="2"
         android:title="@string/randomMealView"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/accountFragment"
-        android:icon="@drawable/ic_accountdefault"
+        android:icon="@drawable/ic_account2"
         android:orderInCategory="3"
         android:title="@string/accountView"
         app:showAsAction="always" />

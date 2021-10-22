@@ -9,12 +9,12 @@ import com.redville.mealapp.R
 @BindingAdapter("loadFromURLCircular")
 fun ImageView.loadFromURLCircular(url: String) = this.load(url) {
     crossfade(true)
-    placeholder(R.drawable.ic_default)
+    placeholder(R.drawable.ic_meal)
     transformations(CircleCropTransformation())
 }
 
 @BindingAdapter("loadFromUrl")
 fun ImageView.loadFromURL(url: String) = this.load(url) {
     crossfade(true)
-    placeholder(R.drawable.ic_default)
+    placeholder(R.drawable.ic_meal)
 }

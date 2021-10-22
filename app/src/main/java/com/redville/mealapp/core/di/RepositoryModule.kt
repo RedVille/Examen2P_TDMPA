@@ -2,7 +2,9 @@ package com.redville.mealapp.core.di
 
 import com.redville.mealapp.core.plataform.NetworkHandler
 import com.redville.mealapp.data.api.MealApi
+import com.redville.mealapp.data.source.CategoryRepositoryImpl
 import com.redville.mealapp.data.source.MealRepositoryImpl
+import com.redville.mealapp.domain.repository.CategoryRepository
 import com.redville.mealapp.domain.repository.MealRepository
 import com.redville.mealapp.framework.api.ApiProvider
 import com.redville.mealapp.framework.db.MealDb
@@ -18,7 +20,16 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideMealRepository(
+    fun provideCategoryRepository(
+        apiProvider: ApiProvider,
+        mealDb: MealDb,
+        networkHandler: NetworkHandler
+    ): CategoryRepository =
+        CategoryRepositoryImpl(apiProvider.getEndpoint(MealApi::class.java), networkHandler = networkHandler, mealDao = mealDb.mealDao())
+
+    @Provides
+    @Singleton
+    fun provideMealsRepository(
         apiProvider: ApiProvider,
         mealDb: MealDb,
         networkHandler: NetworkHandler
