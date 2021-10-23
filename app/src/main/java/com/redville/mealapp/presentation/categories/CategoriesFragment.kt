@@ -15,6 +15,7 @@ import com.redville.mealapp.core.extension.failure
 import com.redville.mealapp.core.extension.observe
 import com.redville.mealapp.core.presentation.BaseFragment
 import com.redville.mealapp.core.presentation.BaseViewState
+import com.redville.mealapp.core.utils.LayoutType
 import com.redville.mealapp.databinding.CategoriesFragmentBinding
 import com.redville.mealapp.databinding.MealsFragmentBinding
 import com.redville.mealapp.domain.model.Category
@@ -52,7 +53,7 @@ class CategoriesFragment : BaseFragment(R.layout.categories_fragment) {
         adapter.addData(categories)
 
         adapter.listener = {
-            navController.navigate(CategoriesFragmentDirections.actionCategoriesFragmentToMealsFragment())
+            navController.navigate(CategoriesFragmentDirections.actionCategoriesFragmentToMealsFragment(it))
         }
 
         binding.rvCategories.apply {
@@ -66,6 +67,9 @@ class CategoriesFragment : BaseFragment(R.layout.categories_fragment) {
         binding.lifecycleOwner = this
 
         categoriesViewModel.doGetCategories("")
+
+        binding.rvCategories.layoutManager = GridLayoutManager(requireContext(), 2)
+        LayoutType.GRID
 
     }
 

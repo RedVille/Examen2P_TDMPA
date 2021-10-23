@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
-import androidx.room.Update
 import com.redville.mealapp.domain.model.Category
 import com.redville.mealapp.domain.model.Meal
 

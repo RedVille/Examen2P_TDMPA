@@ -2,21 +2,21 @@ package com.redville.mealapp.presentation.meals
 
 import com.redville.mealapp.core.presentation.BaseViewModel
 import com.redville.mealapp.domain.model.Meal
-import com.redville.mealapp.domain.usecase.GetCategories
-import com.redville.mealapp.domain.usecase.SaveCategories
+import com.redville.mealapp.domain.usecase.GetMeals
+import com.redville.mealapp.domain.usecase.SaveMeals
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.DelicateCoroutinesApi
 import javax.inject.Inject
 
-/*@DelicateCoroutinesApi
+@DelicateCoroutinesApi
 @HiltViewModel
 class MealsViewModel @Inject constructor(
-    private val getMealsByName: GetCategories,
-    private val saveMeals: SaveCategories
+    private val getMeals: GetMeals,
+    private val saveMeals: SaveMeals
 ) : BaseViewModel() {
 
-    fun doGetMealsByName(name: String) {
-        getMealsByName(name) {
+    fun doGetMeals(category: String) {
+        getMeals(category) {
             it.fold(::handleFailure) {
                 state.value = MealsViewState.MealsReceived(it.meals ?: listOf())
 
@@ -35,4 +35,4 @@ class MealsViewModel @Inject constructor(
         }
     }
 
-}*/
+}

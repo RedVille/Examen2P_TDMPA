@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.redville.mealapp.R
@@ -28,14 +29,15 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
 
     private lateinit var binding: MealsFragmentBinding
     private val adapter : MealsAdapter by lazy { MealsAdapter() }
-    //private val mealsViewModel by viewModels<MealsViewModel>()
+    private val mealsViewModel by viewModels<MealsViewModel>()
+    private val args: MealsFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /*mealsViewModel.apply {
+        mealsViewModel.apply {
             observe(state, ::onViewStateChanged)
             failure(failure, ::handleFailure)
-        }*/
+        }
     }
 
     override fun onViewStateChanged(state: BaseViewState?) {
@@ -62,6 +64,8 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
         binding = MealsFragmentBinding.bind(view)
 
         binding.lifecycleOwner = this
+
+        mealsViewModel.doGetMeals(args.category.name)
 
     }
 

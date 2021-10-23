@@ -14,15 +14,20 @@
             android:id="@+id/action_categoriesFragment_to_mealsFragment"
             app:destination="@id/mealsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/mealsFragment"
         android:name="com.redville.mealapp.presentation.meals.MealsFragment"
         android:label="meals_fragment"
         tools:layout="@layout/meals_fragment" >
+        <argument
+            android:name="category"
+            app:argType="com.redville.mealapp.domain.model.Category" />
         <action
             android:id="@+id/action_mealsFragment_to_mealDetailFragment"
             app:destination="@id/mealDetailFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/mealDetailFragment"
         android:name="com.redville.mealapp.presentation.mealdetail.MealDetailFragment"
