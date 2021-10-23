@@ -24,11 +24,6 @@ class CategoriesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    fun changeView(layoutType: LayoutType) {
-        this.layoutType = layoutType
-        notifyDataSetChanged()
-    }
-
     override fun getItemViewType(position: Int) = layoutType.ordinal
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolderGridItem(

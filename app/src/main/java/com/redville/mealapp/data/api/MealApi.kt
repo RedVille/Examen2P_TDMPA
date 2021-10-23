@@ -14,4 +14,7 @@ interface MealApi {
     @GET("json/v1/1/filter.php")
     fun getMeals(@Query("c") category: String): Call<MealsResponse>
 
+    @GET("json/v1/1/filter.php")
+    fun getMealsByName(@Query("s") name: String): Call<MealsResponse>
+
 }

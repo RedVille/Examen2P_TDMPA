@@ -34,6 +34,20 @@ class MealRepositoryImpl @Inject constructor(
 
     }
 
+    override fun getMealsByName(name: String) : Either<Failure, MealsResponse> {
+        val result = makeRequest(networkHandler, mealApi.getMealsByName(name), { it }, MealsResponse(emptyList()))
+
+        return if (result.isLeft) {
+
+            val localResult = mealDao.getMealsByName("%$name%")
+
+            if (localResult.isEmpty()) result
+            else Either.Right(MealsResponse(localResult))
+
+        } else result
+
+    }
+
     override fun saveMeals(meals: List<Meal>): Either<Failure, Boolean> {
         val result = mealDao.saveMeals(meals)
         return if (result.size == meals.size) Either.Right(true)

@@ -11,6 +11,8 @@ interface MealRepository {
 
     fun getMeals(category: String): Either<Failure, MealsResponse>
 
+    fun getMealsByName(name: String): Either<Failure, MealsResponse>
+
     fun saveMeals(meals: List<Meal>): Either<Failure, Boolean>
 
 }

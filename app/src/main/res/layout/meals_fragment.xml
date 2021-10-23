@@ -9,12 +9,24 @@
         android:layout_height="match_parent"
         android:layout_margin="50dp">
 
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/svMeals"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textFilter"
+            app:queryHint="@string/searchByName"
+            app:iconifiedByDefault="false"
+            app:layout_constraintEnd_toEndOf="@id/swRefresh"
+            app:layout_constraintStart_toStartOf="@id/swRefresh"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/swRefresh" />
+
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swRefresh"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/svMeals"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 

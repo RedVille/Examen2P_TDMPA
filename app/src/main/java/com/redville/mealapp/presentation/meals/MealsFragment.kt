@@ -67,6 +67,29 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
 
         mealsViewModel.doGetMeals(args.category.name)
 
+        binding.svMeals.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                showMeals(query ?: "")
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                showMeals(newText ?: "")
+                return true
+            }
+        })
+
+    }
+
+    private fun showMeals(name: String) {
+        when (name) {
+            "" -> {
+                mealsViewModel.doGetMeals(args.category.name)
+            }
+            else -> {
+                mealsViewModel.doGetMealsByName(name)
+            }
+        }
     }
 
 }
