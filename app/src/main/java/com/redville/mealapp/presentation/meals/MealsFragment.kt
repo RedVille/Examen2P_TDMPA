@@ -1,16 +1,10 @@
 package com.redville.mealapp.presentation.meals
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.redville.mealapp.R
 import com.redville.mealapp.core.extension.failure
 import com.redville.mealapp.core.extension.observe
@@ -53,7 +47,7 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
 
         adapter.listener = {
             mealsViewModel.doGetMealsById(it.idMeal)
-            navController.navigate(MealsFragmentDirections.actionMealsFragmentToMealDetailFragment(it))
+            navController.navigate(MealsFragmentDirections.actionMealsFragmentToMealdetailFragment(it))
         }
 
         binding.rvMeals.apply {
