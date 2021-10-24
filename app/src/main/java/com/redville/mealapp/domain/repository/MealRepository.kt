@@ -15,4 +15,8 @@ interface MealRepository {
 
     fun saveMeals(meals: List<Meal>): Either<Failure, Boolean>
 
+    fun getMealById(id: Int): Either<Failure, MealsResponse>
+
+    fun getRandomMeal(): Either<Failure, MealsResponse>
+
 }

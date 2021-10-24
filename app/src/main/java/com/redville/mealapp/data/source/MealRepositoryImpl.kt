@@ -54,4 +54,33 @@ class MealRepositoryImpl @Inject constructor(
         else Either.Left(Failure.DatabaseError)
     }
 
+    override fun getMealById(id: Int): Either<Failure, MealsResponse> {
+        val result = makeRequest(networkHandler, mealApi.getMealById(id), { it }, MealsResponse(emptyList()))
+
+        return if (result.isLeft) {
+
+            val localResult = mealDao.getMealById(id)
+
+            if (localResult.isEmpty()) result
+            else Either.Right(MealsResponse(localResult))
+
+        } else result
+
+    }
+
+    override fun getRandomMeal(): Either<Failure, MealsResponse> {
+        val result = makeRequest(networkHandler, mealApi.getRandomMeal(), { it }, MealsResponse(emptyList()))
+
+        return if (result.isLeft) {
+
+            val localResult = mealDao.getRandomMeal()
+
+            if (localResult.isEmpty()) result
+            else Either.Right(MealsResponse(localResult))
+
+        } else result
+
+    }
+
+
 }

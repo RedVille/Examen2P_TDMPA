@@ -10,7 +10,7 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/randomMealFragment"
+        android:id="@+id/randomFragment"
         android:icon="@drawable/ic_random"
         android:orderInCategory="2"
         android:title="@string/randomMealView"

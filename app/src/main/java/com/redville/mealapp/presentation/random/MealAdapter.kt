@@ -1,4 +1,4 @@
-package com.redville.mealapp.presentation.meals
+package com.redville.mealapp.presentation.random
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.redville.mealapp.core.utils.LayoutType
-import com.redville.mealapp.databinding.RowMealBinding
+import com.redville.mealapp.databinding.SingleMealBinding
 import com.redville.mealapp.domain.model.Meal
 
 @SuppressLint("NotifyDataSetChanged")
-class MealsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MealAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var list : MutableList<Meal> = mutableListOf()
     var layoutType = LayoutType.LINEAR
@@ -24,7 +24,7 @@ class MealsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemViewType(position: Int) = layoutType.ordinal
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolderItem(
-        RowMealBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        SingleMealBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) =
@@ -35,7 +35,7 @@ class MealsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount() = list.size
 }
 
-class ViewHolderItem(private val binding: RowMealBinding) :
+class ViewHolderItem(private val binding: SingleMealBinding) :
     BaseViewHolder(binding.root) {
 
     override fun bind(data: Meal, listener: (meal: Meal) -> Unit) {

@@ -1,32 +1,29 @@
 package com.redville.mealapp.presentation.mealdetail
 
-import androidx.lifecycle.ViewModelProvider
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import com.redville.mealapp.R
+import com.redville.mealapp.core.presentation.BaseFragment
+import com.redville.mealapp.databinding.MealDetailFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.WithFragmentBindings
 
-class MealDetailFragment : Fragment() {
+@AndroidEntryPoint
+@WithFragmentBindings
+class MealDetailFragment : BaseFragment(R.layout.meal_detail_fragment) {
 
-    companion object {
-        fun newInstance() = MealDetailFragment()
-    }
+    private lateinit var binding: MealDetailFragmentBinding
+    private val args: MealDetailFragmentArgs by navArgs()
 
-    private lateinit var viewModel: MealDetailViewModel
+    override fun setBinding(view: View) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.meal_detail_fragment, container, false)
-    }
+        binding = MealDetailFragmentBinding.bind(view)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MealDetailViewModel::class.java)
-        // TODO: Use the ViewModel
+        binding.apply {
+            lifecycleOwner = this@MealDetailFragment
+            meal = args.meal
+        }
+
     }
 
 }

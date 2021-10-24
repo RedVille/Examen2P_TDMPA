@@ -26,6 +26,12 @@ interface MealDao {
     @Query("SELECT * FROM Meal WHERE name LIKE :filter")
     fun getMealsByName(filter: String): List<Meal>
 
+    @Query("SELECT * FROM Meal WHERE idMeal LIKE :filter")
+    fun getMealById(filter: Int): List<Meal>
+
+    @Query("SELECT * FROM Meal")
+    fun getRandomMeal(): List<Meal>
+
     @Insert(onConflict = REPLACE)
     fun saveMeals(categories: List<Meal>): List<Long>
 

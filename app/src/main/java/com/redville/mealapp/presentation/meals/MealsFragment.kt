@@ -52,7 +52,8 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
         adapter.addData(meals)
 
         adapter.listener = {
-            navController.navigate(MealsFragmentDirections.actionMealsFragmentToMealDetailFragment())
+            mealsViewModel.doGetMealsById(it.idMeal)
+            navController.navigate(MealsFragmentDirections.actionMealsFragmentToMealDetailFragment(it))
         }
 
         binding.rvMeals.apply {

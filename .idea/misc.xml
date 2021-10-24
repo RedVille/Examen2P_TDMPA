@@ -3,12 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CHALLE/5to Semestre/android/Examen2P_TDMPA/app/src/main/res/layout/account_fragment.xml" value="0.259375" />
         <entry key="..\:/CHALLE/5to Semestre/android/Examen2P_TDMPA/app/src/main/res/layout/activity_main.xml" value="0.1716485507246377" />
         <entry key="..\:/CHALLE/5to Semestre/android/Examen2P_TDMPA/app/src/main/res/layout/categories_fragment.xml" value="0.259375" />
         <entry key="..\:/CHALLE/5to Semestre/android/Examen2P_TDMPA/app/src/main/res/layout/grid_category.xml" value="0.259375" />
         <entry key="..\:/CHALLE/5to Semestre/android/Examen2P_TDMPA/app/src/main/res/layout/meal_detail_fragment.xml" value="0.259375" />
-        <entry key="..\:/CHALLE/5to Semestre/android/Examen2P_TDMPA/app/src/main/res/layout/meals_fragment.xml" value="0.259375" />
+        <entry key="..\:/CHALLE/5to Semestre/android/Examen2P_TDMPA/app/src/main/res/layout/meals_fragment.xml" value="0.1" />
+        <entry key="..\:/CHALLE/5to Semestre/android/Examen2P_TDMPA/app/src/main/res/layout/random_fragment.xml" value="0.1" />
+        <entry key="..\:/CHALLE/5to Semestre/android/Examen2P_TDMPA/app/src/main/res/layout/random_meal_fragment.xml" value="0.22395833333333334" />
         <entry key="..\:/CHALLE/5to Semestre/android/Examen2P_TDMPA/app/src/main/res/layout/row_meal.xml" value="0.259375" />
+        <entry key="..\:/CHALLE/5to Semestre/android/Examen2P_TDMPA/app/src/main/res/layout/single_meal.xml" value="0.1953125" />
         <entry key="..\:/CHALLE/5to Semestre/android/Examen2P_TDMPA/app/src/main/res/menu/principal_navbar.xml" value="0.259375" />
       </map>
     </option>

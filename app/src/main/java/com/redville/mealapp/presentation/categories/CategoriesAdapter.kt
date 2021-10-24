@@ -13,14 +13,11 @@ import com.redville.mealapp.domain.model.Category
 class CategoriesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var list: MutableList<Category> = mutableListOf()
-
     var layoutType = LayoutType.GRID
-
     lateinit var listener: (category: Category) -> Unit
 
     fun addData(list: List<Category>) {
         this.list = list.toMutableList()
-
         notifyDataSetChanged()
     }
 
@@ -49,7 +46,6 @@ class ViewHolderGridItem(private val binding: GridCategoryBinding) :
             listener(data)
         }
     }
-
 }
 
 abstract class BaseViewHolder(private val root: View) : RecyclerView.ViewHolder(root) {

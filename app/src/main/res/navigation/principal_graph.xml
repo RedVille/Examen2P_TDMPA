@@ -32,5 +32,18 @@
         android:id="@+id/mealDetailFragment"
         android:name="com.redville.mealapp.presentation.mealdetail.MealDetailFragment"
         android:label="meal_detail_fragment"
-        tools:layout="@layout/meal_detail_fragment" />
+        tools:layout="@layout/meal_detail_fragment" >
+        <argument
+            android:name="meal"
+            app:argType="com.redville.mealapp.domain.model.Meal" />
+    </fragment>
+    <fragment
+        android:id="@+id/randomFragment"
+        android:name="com.redville.mealapp.presentation.random.RandomFragment"
+        android:label="RandomFragment" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.redville.mealapp.presentation.account.AccountFragment"
+        android:label="account_fragment"
+        tools:layout="@layout/account_fragment" />
 </navigation>
