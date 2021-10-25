@@ -5,7 +5,9 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 import com.redville.mealapp.domain.model.Category
+import com.redville.mealapp.domain.model.Like
 import com.redville.mealapp.domain.model.Meal
+import com.redville.mealapp.domain.model.User
 
 @Dao
 interface MealDao {
@@ -34,5 +36,21 @@ interface MealDao {
 
     @Insert(onConflict = REPLACE)
     fun saveMeals(categories: List<Meal>): List<Long>
+
+    // ACCOUNT
+
+    @Query("SELECT * FROM User")
+    fun getUsers(): List<User>
+
+    @Insert(onConflict = REPLACE)
+    fun saveUser(user: User): User
+
+    @Query("SELECT * FROM User WHERE id LIKE :filter")
+    fun getUserById(filter: Int): List<User>
+
+    // LIKES
+
+    @Query("SELECT * FROM `Like` WHERE idUser LIKE :filter")
+    fun getLikeByIdUser(filter: Int): List<Like>
 
 }

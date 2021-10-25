@@ -18,23 +18,23 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/imgMeal"
-                loadFromUrl="@{item.urlDetail}"
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:layout_margin="16dp"
+                loadFromURLCircular="@{item.urlDetail}"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
                 android:src="@drawable/ic_meal"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvName"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <ImageView
                 android:id="@+id/imgLike"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/ic_likeoff"
                 app:layout_constraintEnd_toEndOf="@id/imgMeal"
                 app:layout_constraintTop_toTopOf="@id/imgMeal" />
@@ -43,22 +43,24 @@
                 android:id="@+id/tvName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_margin="5dp"
                 android:text="@{item.name}"
-                android:textAlignment="center"
-                app:layout_constraintStart_toStartOf="@id/imgMeal"
-                app:layout_constraintTop_toBottomOf="@id/imgMeal"
+                app:layout_constraintStart_toEndOf="@id/imgMeal"
+                app:layout_constraintTop_toTopOf="@id/imgMeal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tvCategory"
                 tools:text="Meal" />
 
             <TextView
                 android:id="@+id/tvCategory"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:text="@{item.category}"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toStartOf="@id/tvArea"
-                app:layout_constraintStart_toEndOf="@id/tvName"
-                app:layout_constraintTop_toTopOf="@id/tvName"
+                app:layout_constraintStart_toStartOf="@id/tvName"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
+                app:layout_constraintEnd_toEndOf="@id/tvName"
+                app:layout_constraintBottom_toTopOf="@id/tvArea"
                 tools:text="Category" />
 
             <TextView
@@ -66,23 +68,35 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{item.area}"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="@id/imgMeal"
-                app:layout_constraintTop_toTopOf="@id/tvName"
-                tools:text="Alcoholic" />
+                android:layout_margin="5dp"
+                app:layout_constraintStart_toStartOf="@id/tvName"
+                app:layout_constraintTop_toBottomOf="@id/tvCategory"
+                app:layout_constraintEnd_toEndOf="@id/tvName"
+                app:layout_constraintBottom_toBottomOf="@id/imgMeal"
+                tools:text="Area" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Instructions"
+                app:layout_constraintStart_toStartOf="@id/imgMeal"
+                app:layout_constraintEnd_toEndOf="@id/tvName"
+                app:layout_constraintTop_toBottomOf="@id/imgMeal"
+                app:layout_constraintBottom_toBottomOf="@id/tvInstructions"/>
 
             <TextView
                 android:id="@+id/tvInstructions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_margin="20dp"
                 android:text="@{item.instructions}"
-                tools:text="@tools:sample/lorem/random"
+                tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@id/imgMeal"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
                 app:layout_constraintStart_toStartOf="@id/imgMeal"
-                app:layout_constraintTop_toBottomOf="@id/tvName" />
+                app:layout_constraintEnd_toEndOf="@id/tvName"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

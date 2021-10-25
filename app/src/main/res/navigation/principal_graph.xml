@@ -9,10 +9,12 @@
         android:id="@+id/categoriesFragment"
         android:name="com.redville.mealapp.presentation.categories.CategoriesFragment"
         android:label="categories_fragment"
-        tools:layout="@layout/categories_fragment" >
+        tools:layout="@layout/categories_fragment">
         <action
             android:id="@+id/action_categoriesFragment_to_mealsFragment"
-            app:destination="@id/mealsFragment" />
+            app:destination="@id/mealsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
 
     <fragment
@@ -25,7 +27,9 @@
             app:argType="com.redville.mealapp.domain.model.Category" />
         <action
             android:id="@+id/action_mealsFragment_to_mealdetailFragment"
-            app:destination="@id/mealdetailFragment" />
+            app:destination="@id/mealdetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
 
     <fragment
@@ -53,10 +57,14 @@
         tools:layout="@layout/logout_fragment" >
         <action
             android:id="@+id/action_logoutFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_logoutFragment_to_signupFragment"
-            app:destination="@id/signupFragment" />
+            app:destination="@id/signupFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_logoutFragment_to_accountFragment"
             app:destination="@id/accountFragment" />
@@ -68,7 +76,9 @@
         tools:layout="@layout/login_fragment" >
         <action
             android:id="@+id/action_loginFragment_to_accountFragment"
-            app:destination="@id/accountFragment" />
+            app:destination="@id/accountFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
@@ -77,6 +87,8 @@
         tools:layout="@layout/signup_fragment" >
         <action
             android:id="@+id/action_signupFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
 </navigation>
