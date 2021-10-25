@@ -6,4 +6,17 @@
     <string name="searchByName">Meal...</string>
 
     <string name="app_name">MealApp</string>
+
+    <string name="Login">Login</string>
+    <string name="Logout">Logout</string>
+    <string name="SignUp">Sign Up</string>
+    <string name="loginUser">Username or Email</string>
+    <string name="etUsername">Username</string>
+    <string name="etPassword">Password</string>
+    <string name="etRepeatPassword">Repeat Password</string>
+    <string name="etEmail">Email</string>
+    <string name="or">or</string>
+
+    <string name="tvMessageLoggedOut">Oh no! U haven´t logged in yet (•́ㅿ•̀) </string>
+
 </resources>

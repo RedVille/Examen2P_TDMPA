@@ -11,7 +11,6 @@ import com.redville.mealapp.core.presentation.BaseFragment
 import com.redville.mealapp.core.presentation.BaseViewState
 import com.redville.mealapp.databinding.MealdetailFragmentBinding
 import com.redville.mealapp.domain.model.Meal
-import com.redville.mealapp.presentation.meals.MealsFragmentArgs
 import com.redville.mealapp.presentation.random.MealAdapter
 import com.redville.mealapp.presentation.random.MealViewState
 import dagger.hilt.android.AndroidEntryPoint

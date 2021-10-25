@@ -17,7 +17,7 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/accountFragment"
+        android:id="@+id/logoutFragment"
         android:icon="@drawable/ic_account2"
         android:orderInCategory="3"
         android:title="@string/accountView"
