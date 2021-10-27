@@ -40,7 +40,11 @@
         android:id="@+id/accountFragment"
         android:name="com.redville.mealapp.presentation.account.AccountFragment"
         android:label="account_fragment"
-        tools:layout="@layout/account_fragment" />
+        tools:layout="@layout/account_fragment" >
+        <action
+            android:id="@+id/action_accountFragment_to_logoutFragment"
+            app:destination="@id/logoutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mealdetailFragment"
         android:name="com.redville.mealapp.presentation.mealdetail.MealdetailFragment"
@@ -65,9 +69,6 @@
             app:destination="@id/signupFragment"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right" />
-        <action
-            android:id="@+id/action_logoutFragment_to_accountFragment"
-            app:destination="@id/accountFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

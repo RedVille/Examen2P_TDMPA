@@ -1,32 +1,34 @@
 package com.redville.mealapp.presentation.account.logout
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.redville.mealapp.R
+import com.redville.mealapp.core.presentation.BaseFragment
+import com.redville.mealapp.databinding.LogoutFragmentBinding
 
-class LogoutFragment : Fragment() {
+class LogoutFragment : BaseFragment(R.layout.logout_fragment) {
 
-    companion object {
-        fun newInstance() = LogoutFragment()
+    private lateinit var binding: LogoutFragmentBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
     }
 
-    private lateinit var viewModel: LogoutViewModel
+    override fun setBinding(view: View) {
+        binding = LogoutFragmentBinding.bind(view)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.logout_fragment, container, false)
+        binding.lifecycleOwner = this
+
+        setListener()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LogoutViewModel::class.java)
-        // TODO: Use the ViewModel
+    private fun setListener() {
+        binding.btnGoToLogin.setOnClickListener {
+            navController.navigate(LogoutFragmentDirections.actionLogoutFragmentToLoginFragment())
+        }
+        binding.btnGoToSignUp.setOnClickListener {
+            navController.navigate(LogoutFragmentDirections.actionLogoutFragmentToSignupFragment())
+        }
     }
 
 }

@@ -43,14 +43,12 @@ interface MealDao {
     fun getUsers(): List<User>
 
     @Insert(onConflict = REPLACE)
-    fun saveUser(user: User): User
+    fun saveUser(user: List<User>): List<Long>
 
     @Query("SELECT * FROM User WHERE id LIKE :filter")
     fun getUserById(filter: Int): List<User>
 
     // LIKES
 
-    @Query("SELECT * FROM `Like` WHERE idUser LIKE :filter")
-    fun getLikeByIdUser(filter: Int): List<Like>
 
 }

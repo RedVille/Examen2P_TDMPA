@@ -1,32 +1,106 @@
 package com.redville.mealapp.presentation.account.signup
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.redville.mealapp.R
+import com.redville.mealapp.core.extension.failure
+import com.redville.mealapp.core.extension.observe
+import com.redville.mealapp.core.presentation.BaseFragment
+import com.redville.mealapp.databinding.SignupFragmentBinding
+import com.redville.mealapp.domain.model.User
+import com.redville.mealapp.presentation.account.AccountFragmentDirections
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.WithFragmentBindings
+import kotlinx.coroutines.DelicateCoroutinesApi
 
-class SignupFragment : Fragment() {
+@AndroidEntryPoint
+@WithFragmentBindings
+@DelicateCoroutinesApi
+class SignupFragment : BaseFragment(R.layout.signup_fragment) {
 
-    companion object {
-        fun newInstance() = SignupFragment()
+    private lateinit var binding: SignupFragmentBinding
+    private val signupViewModel by viewModels<SignupViewModel>()
+    //private var imgPfp: Pfp
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        signupViewModel.apply {
+            observe(state, ::onViewStateChanged)
+            failure(failure, ::handleFailure)
+        }
     }
 
-    private lateinit var viewModel: SignupViewModel
+    override fun setBinding(view: View) {
+        binding = SignupFragmentBinding.bind(view)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.signup_fragment, container, false)
+        binding.lifecycleOwner = this
+
+        setListener()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SignupViewModel::class.java)
-        // TODO: Use the ViewModel
+    private fun setListener() {
+        binding.btnSignUp.setOnClickListener {
+            if (validateInputs()) doSignup()
+        }
+        binding.imgNext.setOnClickListener {
+            getNextPfp()
+        }
+        binding.imgPrevious.setOnClickListener {
+            getPreviousPfp()
+        }
     }
+
+    //region DoSignUp
+
+    private fun doSignup() {
+        val user: User = User(0, binding.etUsername.text.toString(), binding.etEmail.text.toString(),
+            binding.etPassword.text.toString(), 1)
+        val newUser = listOf<User>(user)
+
+        signupViewModel.saveUsers(newUser)
+        showToast("SignedUp successfully ^^")
+        navController.navigate(SignupFragmentDirections.actionSignupFragmentToLoginFragment())
+    }
+
+    private fun validateInputs(): Boolean {
+        // validate empties
+        if (binding.etUsername.text.isNullOrBlank() || binding.etEmail.text.isNullOrBlank() ||
+            binding.etPassword.text.isNullOrBlank() || binding.etRepeatPassword.text.isNullOrBlank()){
+            showToast("Don't leave empty fields!! D:")
+            return false
+        }
+
+        // validate existing user
+
+
+        // validate password
+        if (binding.etPassword.text.toString() != binding.etRepeatPassword.text.toString()){
+            showToast("Ur password doesn't match ):")
+            return false
+        }
+
+        setPfp()
+
+        return true
+    }
+
+    //endregion
+
+    //region Pfp
+
+    private fun setPfp() {
+
+    }
+
+    private fun getPreviousPfp() {
+
+    }
+
+    private fun getNextPfp() {
+
+    }
+
+    //endregion
 
 }

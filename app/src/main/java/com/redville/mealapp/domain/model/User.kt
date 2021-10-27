@@ -12,6 +12,6 @@ class User(
     val name: String = "",
     val email: String = "",
     val password: String = "",
-    val pfp: String = ""
+    val pfp: Int = 1
 ) {
 }
