@@ -46,8 +46,6 @@ class LoginViewModel @Inject constructor(
     //region validations
 
     fun validateInputs(): String {
-        username
-        password
 
         if (username.value.toString().isBlank() || password.value.toString().isBlank()) return "Don't leave empty fields!! D:"
 

@@ -5,9 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.redville.mealapp.R
+import com.redville.mealapp.core.presentation.BaseViewState
 import com.redville.mealapp.core.utils.LayoutType
 import com.redville.mealapp.databinding.RowMealBinding
 import com.redville.mealapp.domain.model.Meal
+import com.redville.mealapp.presentation.account.AccountViewState
+import com.redville.mealapp.presentation.likes.LikesViewState
 
 @SuppressLint("NotifyDataSetChanged")
 class MealsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -16,8 +20,17 @@ class MealsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var layoutType = LayoutType.LINEAR
     lateinit var listener : (meal: Meal) -> Unit
 
+    private var liked: Boolean = false
+    private var imglike: Int = R.drawable.ic_likeoff
+
     fun addData(list: List<Meal>) {
         this.list = list.toMutableList()
+        notifyDataSetChanged()
+    }
+
+    fun addLike(like: Boolean) {
+        this.liked = like
+        if (like) imglike = R.drawable.ic_likeon
         notifyDataSetChanged()
     }
 
@@ -38,13 +51,22 @@ class MealsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 class ViewHolderItem(private val binding: RowMealBinding) :
     BaseViewHolder(binding.root) {
 
+    //private var imL: Int = imgLike
+
     override fun bind(data: Meal, listener: (meal: Meal) -> Unit) {
         binding.item = data
 
         binding.root.setOnClickListener {
             listener(data)
         }
+
+        binding.imgLike.setOnClickListener {
+
+        }
+
+        //binding.imgLike.setImageResource(this.)
     }
+
 }
 
 abstract class BaseViewHolder(private val root: View) : RecyclerView.ViewHolder(root) {

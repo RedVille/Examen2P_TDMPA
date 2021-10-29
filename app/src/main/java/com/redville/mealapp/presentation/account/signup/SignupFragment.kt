@@ -19,9 +19,18 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 @DelicateCoroutinesApi
 class SignupFragment : BaseFragment(R.layout.signup_fragment) {
 
+    private var pfps: List<Int> = listOf(R.drawable.ic_pfp1, R.drawable.ic_pfp2, R.drawable.ic_pfp3,
+                                        R.drawable.ic_pfp4, R.drawable.ic_pfp5, R.drawable.ic_pfp6,
+                                        R.drawable.ic_pfp7, R.drawable.ic_pfp8, R.drawable.ic_pfp9,
+                                        R.drawable.ic_pfp10, R.drawable.ic_pfp11, R.drawable.ic_pfp12,
+                                        R.drawable.ic_pfp13, R.drawable.ic_pfp14, R.drawable.ic_pfp15,
+                                        R.drawable.ic_pfp16, R.drawable.ic_pfp17, R.drawable.ic_pfp18,
+                                        R.drawable.ic_pfp19, R.drawable.ic_pfp20, R.drawable.ic_pfp21,
+                                        R.drawable.ic_pfp22, R.drawable.ic_pfp23, R.drawable.ic_pfp24)
+
     private lateinit var binding: SignupFragmentBinding
     private val signupViewModel by viewModels<SignupViewModel>()
-    //private var imgPfp: Pfp
+    private var imgPfp: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,8 +74,7 @@ class SignupFragment : BaseFragment(R.layout.signup_fragment) {
     //region DoSignUp
 
     private fun doSignup() {
-        val user = User(0,binding.etUsername.text.toString(), binding.etPassword.text.toString(), 1)
-        val newUser = listOf(user)
+        val newUser = listOf(User(0,binding.etUsername.text.toString(), binding.etPassword.text.toString(), imgPfp))
 
         signupViewModel.saveUsers(newUser)
         showToast("SignedUp successfully ^^")
@@ -88,15 +96,27 @@ class SignupFragment : BaseFragment(R.layout.signup_fragment) {
 
     //region Pfp
 
-    private fun setPfp() {
-
-    }
-
     private fun getPreviousPfp() {
+
+        if (imgPfp > 0) {
+            imgPfp--
+            binding.imgPfpSignUp.setImageResource(pfps[imgPfp])
+        } else {
+            imgPfp = pfps.size-1
+            binding.imgPfpSignUp.setImageResource(pfps[imgPfp])
+        }
 
     }
 
     private fun getNextPfp() {
+
+        if (imgPfp < pfps.size-1) {
+            imgPfp++
+            binding.imgPfpSignUp.setImageResource(pfps[imgPfp])
+        } else {
+            imgPfp = 0
+            binding.imgPfpSignUp.setImageResource(pfps[imgPfp])
+        }
 
     }
 

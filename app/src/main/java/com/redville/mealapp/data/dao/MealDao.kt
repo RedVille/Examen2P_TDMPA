@@ -1,6 +1,7 @@
 package com.redville.mealapp.data.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
@@ -8,6 +9,7 @@ import com.redville.mealapp.domain.model.Category
 import com.redville.mealapp.domain.model.Like
 import com.redville.mealapp.domain.model.Meal
 import com.redville.mealapp.domain.model.User
+import retrofit2.http.DELETE
 
 @Dao
 interface MealDao {
@@ -47,6 +49,12 @@ interface MealDao {
 
     // LIKES
 
+    @Insert(onConflict = REPLACE)
+    fun saveLike(like: List<Like>): List<Long>
 
+    @Query("SELECT * FROM `Like` WHERE nameUser LIKE :filter")
+    fun getLikeByUser(filter: String): List<Like>
 
+    @Delete
+    fun deleteLike(like: List<Like>): Int
 }

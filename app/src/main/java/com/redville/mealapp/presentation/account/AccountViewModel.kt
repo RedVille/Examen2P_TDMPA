@@ -16,7 +16,6 @@ import javax.inject.Inject
 @HiltViewModel
 class AccountViewModel @Inject constructor(
     private val getLocalUser: GetLocalUser,
-    private val saveLocalUser: SaveLocalUser,
     private val removePrefs: RemovePrefs
 ) :
     BaseViewModel() {

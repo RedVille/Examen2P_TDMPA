@@ -44,9 +44,7 @@ class SignupViewModel @Inject constructor(
     //region validations
 
     fun validateInputs(): String {
-        name
-        pass
-        rePass
+
         // empties
         if (name.value.toString().isBlank() || pass.value.toString().isBlank() ||
             rePass.value.toString().isBlank()) return "Don't leave empty fields!! D:"

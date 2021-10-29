@@ -19,6 +19,15 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 @DelicateCoroutinesApi
 class AccountFragment : BaseFragment(R.layout.account_fragment) {
 
+    private var pfps: List<Int> = listOf(R.drawable.ic_pfp1, R.drawable.ic_pfp2, R.drawable.ic_pfp3,
+        R.drawable.ic_pfp4, R.drawable.ic_pfp5, R.drawable.ic_pfp6,
+        R.drawable.ic_pfp7, R.drawable.ic_pfp8, R.drawable.ic_pfp9,
+        R.drawable.ic_pfp10, R.drawable.ic_pfp11, R.drawable.ic_pfp12,
+        R.drawable.ic_pfp13, R.drawable.ic_pfp14, R.drawable.ic_pfp15,
+        R.drawable.ic_pfp16, R.drawable.ic_pfp17, R.drawable.ic_pfp18,
+        R.drawable.ic_pfp19, R.drawable.ic_pfp20, R.drawable.ic_pfp21,
+        R.drawable.ic_pfp22, R.drawable.ic_pfp23, R.drawable.ic_pfp24)
+
     private lateinit var binding: AccountFragmentBinding
     private val accountViewModel by viewModels<AccountViewModel>()
 
@@ -58,6 +67,7 @@ class AccountFragment : BaseFragment(R.layout.account_fragment) {
 
     private fun printUser(activeUser: User) {
         binding.tvUsername.text = activeUser.name
+        binding.imgPfp.setImageResource(pfps[activeUser.pfp])
     }
 
 }
