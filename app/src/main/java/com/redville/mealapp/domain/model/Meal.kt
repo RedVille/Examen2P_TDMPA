@@ -3,6 +3,7 @@ package com.redville.mealapp.domain.model
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.redville.mealapp.R
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
@@ -19,8 +20,7 @@ class Meal(
     @Json(name = "strInstructions") val instructions: String? = "",
     @Json(name = "strMealThumb") val urlThumb: String = "",
     @Json(name = "strImageSource") val urlImage: String? = "",
-    @Json(name = "strSource") val urlsource: String? = "",
-    @Json(name = "strYoutube") val urlyoutube: String? = ""
+    val liked: Int = 0
 ) : Parcelable {
 
     val urlDetail: String

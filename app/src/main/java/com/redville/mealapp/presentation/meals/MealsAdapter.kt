@@ -51,8 +51,6 @@ class MealsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 class ViewHolderItem(private val binding: RowMealBinding) :
     BaseViewHolder(binding.root) {
 
-    //private var imL: Int = imgLike
-
     override fun bind(data: Meal, listener: (meal: Meal) -> Unit) {
         binding.item = data
 
@@ -64,7 +62,8 @@ class ViewHolderItem(private val binding: RowMealBinding) :
 
         }
 
-        //binding.imgLike.setImageResource(this.)
+        if (data.liked == 1) binding.imgLike.setImageResource(R.drawable.ic_likeon)
+        else binding.imgLike.setImageResource(R.drawable.ic_likeoff)
     }
 
 }

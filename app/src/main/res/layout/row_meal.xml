@@ -59,7 +59,7 @@
                 android:id="@+id/imgLike"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_likeoff"
+                tools:src="@drawable/ic_likeoff"
                 app:layout_constraintTop_toTopOf="@id/imgMeal"
                 app:layout_constraintBottom_toBottomOf="@id/imgMeal"
                 app:layout_constraintEnd_toEndOf="@id/txvName" />
