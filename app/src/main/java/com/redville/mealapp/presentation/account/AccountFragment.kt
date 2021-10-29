@@ -36,7 +36,8 @@ class AccountFragment : BaseFragment(R.layout.account_fragment) {
         super.onViewStateChanged(state)
         when (state) {
             is AccountViewState.LoggedUser -> {
-                printUser()
+                accountViewModel.getLocalUser()
+                printUser(state.user)
             }
             is AccountViewState.UserNotFound -> {
                 navController.navigate(AccountFragmentDirections.actionAccountFragmentToLogoutFragment())
@@ -49,10 +50,14 @@ class AccountFragment : BaseFragment(R.layout.account_fragment) {
 
         binding.lifecycleOwner = this
 
+        binding.btnLogout.setOnClickListener {
+            accountViewModel.removeLocalUser()
+            navController.navigate(AccountFragmentDirections.actionAccountFragmentToLogoutFragment())
+        }
     }
 
-    fun printUser() {
-
+    private fun printUser(activeUser: User) {
+        binding.tvUsername.text = activeUser.name
     }
 
 }

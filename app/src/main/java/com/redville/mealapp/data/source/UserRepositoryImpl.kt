@@ -12,12 +12,6 @@ class UserRepositoryImpl @Inject constructor(
     private val mealDao: MealDao
 ) : UserRepository {
 
-    override fun getUsers(): Either<Failure, UsersResponse> {
-
-        return Either.Right(UsersResponse(mealDao.getUsers()))
-
-    }
-
     override fun saveUser(user: List<User>): Either<Failure, Boolean> {
 
         val result = mealDao.saveUser(user)
@@ -26,9 +20,9 @@ class UserRepositoryImpl @Inject constructor(
 
     }
 
-    override fun getUserById(id: Int): Either<Failure, UsersResponse> {
+    override fun getUserByName(name: String): Either<Failure, UsersResponse> {
 
-        return Either.Right(UsersResponse(mealDao.getUserById(id)))
+        return Either.Right(UsersResponse(mealDao.getUserByName(name)))
 
     }
 

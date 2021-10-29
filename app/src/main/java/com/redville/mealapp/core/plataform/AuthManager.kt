@@ -1,5 +1,6 @@
 package com.redville.mealapp.core.plataform
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import com.redville.mealapp.domain.model.User
@@ -8,7 +9,7 @@ import javax.inject.Inject
 
 class AuthManager @Inject constructor(private val context: Context) {
 
-    private val PREFS_KEY = "COCKTAIL_PREFS"
+    private val PREFS_KEY = "USER_PREFS"
     private val USER_KEY = "USER"
 
     private var preferences: SharedPreferences =
@@ -25,5 +26,9 @@ class AuthManager @Inject constructor(private val context: Context) {
                 null
             }
         }
-
+/*
+    @SuppressLint("CommitPrefEdits")
+    fun removePreferences() {
+        preferences.edit().remove(PREFS_KEY)
+    }*/
 }

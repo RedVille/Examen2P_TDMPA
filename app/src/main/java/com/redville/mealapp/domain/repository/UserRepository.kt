@@ -7,10 +7,8 @@ import com.redville.mealapp.domain.model.User
 
 interface UserRepository {
 
-    fun getUsers(): Either<Failure, UsersResponse>
-
     fun saveUser(user: List<User>): Either<Failure, Boolean>
 
-    fun getUserById(id: Int): Either<Failure, UsersResponse>
+    fun getUserByName(name: String): Either<Failure, UsersResponse>
 
 }

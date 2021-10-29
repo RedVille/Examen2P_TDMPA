@@ -9,7 +9,6 @@ import com.squareup.moshi.JsonClass
 class Like(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val idUser: Int = 0,
-    val idMeal: Int = 0
-) {
-}
+    val nameUser: String = "",
+    val nameMeal: String = ""
+)

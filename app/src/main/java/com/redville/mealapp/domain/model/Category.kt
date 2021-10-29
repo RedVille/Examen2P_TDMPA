@@ -16,5 +16,4 @@ class Category (
 @Json(name = "strCategory") val name: String = "",
 @Json(name = "strCategoryThumb") val urlThumb: String = "",
 @Json(name = "strCategoryDescription") val description: String? = ""
-) : Parcelable {
-}
+) : Parcelable

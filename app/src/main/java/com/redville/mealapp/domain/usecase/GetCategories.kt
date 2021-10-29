@@ -6,8 +6,8 @@ import com.redville.mealapp.domain.repository.CategoryRepository
 import javax.inject.Inject
 
 class GetCategories @Inject constructor(private val categoryRepository: CategoryRepository) :
-    UseCase<CategoriesResponse, String>() {
+    UseCase<CategoriesResponse, UseCase.None>() {
 
-    override suspend fun run(params: String) = categoryRepository.getCategories()
+    override suspend fun run(params: None) = categoryRepository.getCategories()
 
 }

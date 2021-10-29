@@ -58,7 +58,7 @@ class CategoriesFragment : BaseFragment(R.layout.categories_fragment) {
 
         binding.lifecycleOwner = this
 
-        categoriesViewModel.doGetCategories("")
+        categoriesViewModel.doGetCategories()
 
         binding.rvCategories.layoutManager = GridLayoutManager(requireContext(), 2)
         LayoutType.GRID

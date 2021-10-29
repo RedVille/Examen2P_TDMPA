@@ -10,10 +10,6 @@ class LogoutFragment : BaseFragment(R.layout.logout_fragment) {
 
     private lateinit var binding: LogoutFragmentBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun setBinding(view: View) {
         binding = LogoutFragmentBinding.bind(view)
 

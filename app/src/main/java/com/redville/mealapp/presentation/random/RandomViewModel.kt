@@ -32,7 +32,7 @@ class RandomViewModel @Inject constructor(
 
     private fun saveMeals(meals: List<Meal>) {
         saveMeals(meals) {
-            it.fold((::handleFailure)) {
+            it.fold(::handleFailure) {
                 it
             }
         }

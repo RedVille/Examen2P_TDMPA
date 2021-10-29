@@ -1,5 +1,6 @@
 package com.redville.mealapp.presentation.categories
 
+import com.redville.mealapp.core.interactor.UseCase
 import com.redville.mealapp.core.presentation.BaseViewModel
 import com.redville.mealapp.domain.model.Category
 import com.redville.mealapp.domain.usecase.GetCategories
@@ -15,8 +16,8 @@ class CategoriesViewModel @Inject constructor(
     private val saveCategories: SaveCategories
 ) : BaseViewModel() {
 
-    fun doGetCategories(name: String) {
-        getCategories(name) {
+    fun doGetCategories() {
+        getCategories(params = UseCase.None()) {
             it.fold(::handleFailure) {
                 state.value = CategoriesViewState.CategoriesReceived(it.categories ?: listOf())
 
@@ -29,7 +30,7 @@ class CategoriesViewModel @Inject constructor(
 
     private fun saveCategories(categories: List<Category>) {
         saveCategories(categories) {
-            it.fold((::handleFailure)) {
+            it.fold(::handleFailure) {
                 it
             }
         }
