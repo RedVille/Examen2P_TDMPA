@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.redville.mealapp.R
 import com.redville.mealapp.core.utils.LayoutType
-import com.redville.mealapp.databinding.RowMealBinding
+import com.redville.mealapp.databinding.RowmealFragmentBinding
 import com.redville.mealapp.domain.model.Meal
 
 @SuppressLint("NotifyDataSetChanged")
@@ -25,7 +25,7 @@ class MealsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemViewType(position: Int) = layoutType.ordinal
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolderItem(
-        RowMealBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        RowmealFragmentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) =
@@ -36,7 +36,7 @@ class MealsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount() = list.size
 }
 
-class ViewHolderItem(private val binding: RowMealBinding) :
+class ViewHolderItem(private val binding: RowmealFragmentBinding) :
     BaseViewHolder(binding.root) {
 
     override fun bind(data: Meal, listener: (meal: Meal) -> Unit) {
