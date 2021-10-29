@@ -7,15 +7,21 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="50dp">
+        android:background="@color/back">
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/svMeals"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="textFilter"
+            android:layout_marginTop="30dp"
             app:queryHint="@string/searchByName"
             app:iconifiedByDefault="false"
+            android:shadowColor="@color/purple_200"
+            android:backgroundTint="@color/transparent"
+            android:background="@color/transparent"
+            android:foregroundTint="@color/purple_200"
+            android:foregroundTintMode="@color/purple_200"
             app:layout_constraintEnd_toEndOf="@id/swRefresh"
             app:layout_constraintStart_toStartOf="@id/swRefresh"
             app:layout_constraintTop_toTopOf="parent"
@@ -25,6 +31,9 @@
             android:id="@+id/swRefresh"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/svMeals"
             app:layout_constraintStart_toStartOf="parent"
