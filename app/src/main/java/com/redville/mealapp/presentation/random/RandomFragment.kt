@@ -43,7 +43,7 @@ class RandomFragment : BaseFragment(R.layout.random_fragment) {
         when (state) {
             is MealViewState.MealReceived -> printMeal(state.meal[0])
             is AccountViewState.LoggedUser -> setUser(state.user.name)
-            is AccountViewState.UserNotFound -> showToast("U need to Login to like meals")
+            is AccountViewState.UserNotFound -> if (changingLike) showToast("U need to Login to like meals")
             is LikesViewState.LikesReceived -> changeLike(likeState(state.likes))
         }
     }
