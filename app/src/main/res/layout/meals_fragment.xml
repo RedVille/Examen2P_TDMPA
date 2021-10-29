@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 tools:itemCount="6"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/row_meal"/>
+                tools:listitem="@layout/rowmeal_fragment"/>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

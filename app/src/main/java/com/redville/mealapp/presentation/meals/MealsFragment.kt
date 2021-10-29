@@ -32,7 +32,7 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
     //likes vars
     private var actualLikedMeal: String = ""
     private var actualUser: String = ""
-    private var actualLike: Like = Like()
+    private var likedMeals: List<Meal> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,20 +47,17 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
         when (state) {
             is MealsViewState.MealsReceived -> setUpAdapter(state.meals)
             is AccountViewState.LoggedUser -> setUser(state.user.name)
-            is AccountViewState.UserNotFound -> showToast("U need to have an account to like meals")
-            is LikesViewState.LikesReceived -> checkLike(likeState(state.likes))//changeLike(likeState(state.likes))
+            is AccountViewState.UserNotFound -> addNormalData()
+            is LikesViewState.LikesReceived -> addMealsAdapt(state.likes)//checkLike(likeState(state.likes))//changeLike(likeState(state.likes))
         }
     }
 
     private fun setUpAdapter(meals: List<Meal>) {
 
-        adapter.addData(meals)
+        checkUser(meals)
 
         adapter.listener = {
             mealsViewModel.doGetMealsById(it.idMeal)
-
-            // show likes
-            setMeal(it.name)
 
             navController.navigate(MealsFragmentDirections.actionMealsFragmentToMealdetailFragment(it))
 
@@ -71,6 +68,35 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
         }
     }
 
+    private fun checkUser(meals: List<Meal>) {
+        mealsViewModel.getLocalUser()
+        likedMeals = meals
+    }
+
+    private fun addMealsAdapt(likes: List<Like>) {
+        val newMeals: MutableList<Meal> = mutableListOf()
+
+        if (likes.isNotEmpty()) {
+            likedMeals.forEach{
+                val newMeal: Meal = it
+                var m = Meal(newMeal.idMeal,newMeal.name,newMeal.category,newMeal.area,newMeal.instructions,newMeal.urlThumb,newMeal.urlImage,0)
+                likes.forEach{
+                    if (newMeal.name == it.nameMeal)
+                        m = Meal(newMeal.idMeal,newMeal.name,newMeal.category,newMeal.area,newMeal.instructions,newMeal.urlThumb,newMeal.urlImage,1)
+                }
+                newMeals.add(m)
+            }
+
+            adapter.addData(newMeals)
+        } else {
+            adapter.addData(likedMeals)
+        }
+    }
+
+    private fun addNormalData() {
+        adapter.addData(likedMeals)
+    }
+
     private fun setMeal(mealName: String) {
         mealsViewModel.getLocalUser()
         actualLikedMeal = mealName
@@ -79,32 +105,6 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
     private fun setUser(user: String) {
         mealsViewModel.doGetLikeByUser(user)
         actualUser = user
-    }
-
-    private fun likeState(likes: List<Like>): Boolean {
-        likes.forEach{
-            if (it.nameMeal == actualLikedMeal) {
-                actualLike = it
-                return false
-            }
-        }
-        return true
-    }
-
-    private fun checkLike(like: Boolean) {
-        // no se agregado por lo tanto es un like vacío
-        if (like) adapter.addLike(false)
-        else adapter.addLike(true)
-    }
-
-    private fun changeLike(like: Boolean) {
-        if (like) {
-            // like
-            mealsViewModel.saveLike(listOf(Like(0, actualUser, actualLikedMeal)))
-        } else {
-            // dislike
-            mealsViewModel.deleteLike(listOf(actualLike))
-        }
     }
 
     override fun setBinding(view: View) {
