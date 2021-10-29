@@ -75,9 +75,11 @@ class RowmealFragment : BaseFragment(R.layout.rowmeal_fragment) {
         if (like) {
             // like
             rowmealViewModel.saveLike(listOf(Like(0, actualUser, actualMeal)))
+            binding.imgLike.setImageResource(R.drawable.ic_likeon)
         } else {
             // dislike
             rowmealViewModel.deleteLike(listOf(actualLike))
+            binding.imgLike.setImageResource(R.drawable.ic_likeoff)
         }
     }
 

@@ -97,11 +97,6 @@ class MealsFragment : BaseFragment(R.layout.meals_fragment) {
         adapter.addData(likedMeals)
     }
 
-    private fun setMeal(mealName: String) {
-        mealsViewModel.getLocalUser()
-        actualLikedMeal = mealName
-    }
-
     private fun setUser(user: String) {
         mealsViewModel.doGetLikeByUser(user)
         actualUser = user

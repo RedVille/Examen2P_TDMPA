@@ -8,8 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swRefreshDetail"
+        <ScrollView
+            android:id="@+id/swScroll"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -17,15 +17,96 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvMeal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:itemCount="6"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/single_meal"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                <ImageView
+                    android:id="@+id/imgMeal"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/ic_meal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/tvName"/>
+
+                <ImageView
+                    android:id="@+id/imgLike"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="30dp"
+                    android:src="@drawable/ic_likeoff"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="@id/imgMeal"
+                    app:layout_constraintTop_toBottomOf="@id/imgMeal"
+                    app:layout_constraintEnd_toEndOf="@id/imgMeal"
+                    app:layout_constraintBottom_toTopOf="@id/tvCategory"
+                    tools:text="Meal" />
+
+                <TextView
+                    android:id="@+id/tvCategory"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="@id/tvName"
+                    app:layout_constraintTop_toBottomOf="@id/tvName"
+                    app:layout_constraintEnd_toEndOf="@id/tvName"
+                    app:layout_constraintBottom_toTopOf="@id/tvArea"
+                    tools:text="Category" />
+
+                <TextView
+                    android:id="@+id/tvArea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="@id/tvName"
+                    app:layout_constraintTop_toBottomOf="@id/tvCategory"
+                    app:layout_constraintEnd_toEndOf="@id/tvName"
+                    app:layout_constraintBottom_toTopOf="@id/tvTitle"
+                    tools:text="Area" />
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Instructions"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="@id/tvName"
+                    app:layout_constraintEnd_toEndOf="@id/tvName"
+                    app:layout_constraintTop_toBottomOf="@id/tvArea"
+                    app:layout_constraintBottom_toTopOf="@id/tvInstructions"/>
+
+                <TextView
+                    android:id="@+id/tvInstructions"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="30dp"
+                    tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                    app:layout_constraintStart_toStartOf="@id/tvName"
+                    app:layout_constraintEnd_toEndOf="@id/tvName"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
